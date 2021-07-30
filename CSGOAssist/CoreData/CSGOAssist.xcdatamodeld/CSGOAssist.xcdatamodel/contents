@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Action" representedClassName="Action" syncable="YES">
+        <attribute name="imageUrl" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="side" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Side" inverseName="actions" inverseEntity="Side"/>
+        <relationship name="topics" toMany="YES" deletionRule="Cascade" destinationEntity="Topic" inverseName="action" inverseEntity="Topic"/>
+    </entity>
+    <entity name="Article" representedClassName="Article" syncable="YES">
+        <attribute name="imageUrl" attributeType="String"/>
+        <attribute name="text" attributeType="String"/>
+        <relationship name="topic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" inverseName="articles" inverseEntity="Topic"/>
+    </entity>
+    <entity name="Map" representedClassName="Map" syncable="YES">
+        <attribute name="imageUrl" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="sides" toMany="YES" deletionRule="Cascade" destinationEntity="Side" inverseName="map" inverseEntity="Side"/>
+    </entity>
+    <entity name="Side" representedClassName="Side" syncable="YES">
+        <attribute name="imageUrl" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="actions" toMany="YES" deletionRule="Cascade" destinationEntity="Action" inverseName="side" inverseEntity="Action"/>
+        <relationship name="map" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="sides" inverseEntity="Map"/>
+    </entity>
+    <entity name="Topic" representedClassName="Topic" syncable="YES">
+        <attribute name="header" attributeType="String"/>
+        <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="topics" inverseEntity="Action"/>
+        <relationship name="articles" toMany="YES" deletionRule="Cascade" destinationEntity="Article" inverseName="topic" inverseEntity="Article"/>
+    </entity>
+    <elements>
+        <element name="Action" positionX="-175.6754760742188" positionY="123.210205078125" width="128" height="89"/>
+        <element name="Article" positionX="129.2305908203125" positionY="69.62509155273438" width="128" height="74"/>
+        <element name="Map" positionX="-390.6167907714844" positionY="104.9476623535156" width="128" height="74"/>
+        <element name="Side" positionX="-329.4494018554688" positionY="246.0045166015625" width="128" height="89"/>
+        <element name="Topic" positionX="-22.8419189453125" positionY="276.6541748046875" width="128" height="74"/>
+    </elements>
+</model>
