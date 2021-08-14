@@ -22,21 +22,22 @@ final class MapsContainerController: UIViewController {
     ///Network Service
     private let networkService: NetworkServiceProtocol
     
+    ///Settings Content View Controller
     private var settingsVC: SettingsContentController?
     private var isMoved: Bool = false
-    ///Child Controller who contains Maps
+    ///Maps Content View Controller
     private var mapsCVC: MapsContentController?
-    ///Child Controller who contains Sides
+    ///Sides Content View Controller
     private var sidesCVC: SidesContentController?
-    ///Child Controller who contains Actions
+    ///Actions Content View Controller
     private var actionsTVC: ActionsContentController?
     
-    //Model
-    ///DTO model for transfering to mapsCVC data source
+    ///Model
     private var maps: [MapDTO] = []
     
     //MARK: - Initialization
-    init(coordinator: Coordinator) {
+    init(coordinator: Coordinator, maps: [MapDTO]) {
+        self.maps = maps
         self.coordinator = coordinator
         self.coreDataService = coordinator.serviceLocator.coreDataSerivce
         self.networkService = coordinator.serviceLocator.networkService
@@ -50,7 +51,6 @@ final class MapsContainerController: UIViewController {
     //MARK: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.maps = coreDataService.readMaps()
         configureMapsCVC()
     }
     
@@ -137,7 +137,6 @@ extension MapsContainerController: ActionsContentControllerProtocol {
     }
     
     func leftSwiped() {
-
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.8,
@@ -149,7 +148,6 @@ extension MapsContainerController: ActionsContentControllerProtocol {
             self.actionsTVC?.remove()
             self.actionsTVC = nil
         }
-        
     }
     
     //Functions
@@ -166,6 +164,7 @@ extension MapsContainerController: ActionsContentControllerProtocol {
 //MARK: - Settings Content Controller
 extension MapsContainerController {
     
+    //Functions
     func configureSettingsVC() {
         switch isMoved {
         case false:

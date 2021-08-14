@@ -16,14 +16,11 @@ final class ActionTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = Gradient.horizon.colorsUI.first
         self.layer.cornerRadius = 20
-        print(self.bounds.height)
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
 }
 

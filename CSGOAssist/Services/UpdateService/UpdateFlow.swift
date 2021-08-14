@@ -18,17 +18,17 @@ func ==><T: Operation>(lhs: T, rhs: T) -> T {
     return rhs
 }
 
-class UpdateFlow {
+final class UpdateFlow: UpdateFlowProtocol {
     
-    let queue = OperationQueue()
-    
-    let networkService: NetworkServiceProtocol
-    let coreDataService: CoreDataServiceProtocol
+    private let queue = OperationQueue()
+    private let networkService: NetworkServiceProtocol
+    private let coreDataService: CoreDataServiceProtocol
+    private let coordinator: CoordinatorProtocol
 
-    init(networkService: NetworkServiceProtocol,
-         coreDataService: CoreDataServiceProtocol) {
-        self.networkService = networkService
-        self.coreDataService = coreDataService
+    init(coordinator: CoordinatorProtocol) {
+        self.networkService = coordinator.serviceLocator.networkService
+        self.coreDataService = coordinator.serviceLocator.coreDataSerivce
+        self.coordinator = coordinator
     }
     
     func checkState() {
@@ -49,10 +49,12 @@ class UpdateFlow {
             let loadData = LoadDataOperation(networkService: self.networkService, needsUpdate: nil)
             let writeMaps = WriteMapsOperation(coreDataService: self.coreDataService, maps: nil)
             let requestCompatibleVersion = RequestCompatibleVersionOperation(networkService: self.networkService)
+            let readMaps = ReadMapsOperation(coreDataService: self.coreDataService)
+            let endingBlock = StartApplicationOperation(coordinator: self.coordinator, maps: nil)
         
-            requestTimeStamp ==> loadData ==> writeMaps ==> requestCompatibleVersion
+            requestTimeStamp ==> loadData ==> writeMaps ==> requestCompatibleVersion ==> readMaps ==> endingBlock
 
-            self.queue.addOperations([requestTimeStamp, loadData, writeMaps, requestCompatibleVersion], waitUntilFinished: true)
+            self.queue.addOperations([requestTimeStamp, loadData, writeMaps, requestCompatibleVersion, readMaps, endingBlock], waitUntilFinished: true)
         }
     }
 

@@ -8,17 +8,16 @@
 import UIKit
 
 //MARK: - Load View Controller 
-class LoadViewController: UIViewController {
+final class LoadViewController: UIViewController {
     
-    //MARK: - Properties
-    private var coordinator: Coordinator
-    private var updateFlow: UpdateFlow
+    //MARK: - Private Properties
+    private var coordinator: CoordinatorProtocol
+    private var updateFlow: UpdateFlowProtocol
 
     //MARK: - Initialization
-    init(coordinator: Coordinator) {
+    init(coordinator: CoordinatorProtocol) {
         self.coordinator = coordinator
-        self.updateFlow = UpdateFlow(networkService: coordinator.serviceLocator.networkService,
-                                     coreDataService: coordinator.serviceLocator.coreDataSerivce)
+        self.updateFlow = UpdateFlow(coordinator: coordinator)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -80,17 +79,8 @@ class LoadViewController: UIViewController {
         super.viewWillAppear(animated)
         gradientLayer.frame = view.bounds
         loadingAnimationView.animate()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         self.updateFlow.checkState()
         self.updateFlow.start()
-        self.updateFlow.queue.addOperation {
-            DispatchQueue.main.async {
-                self.coordinator.toMapsContainerController()
-            }
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

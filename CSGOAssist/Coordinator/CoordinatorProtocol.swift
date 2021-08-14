@@ -24,6 +24,6 @@ protocol CoordinatorProtocol {
     
     /// Make app move to MapsContainerController
     /// This controller contains all ViewControllers (Maps, Sides, Acitons, Topics, Articles)
-    func toMapsContainerController()
+    func toMapsContainerController(maps: [MapDTO])
     
 }

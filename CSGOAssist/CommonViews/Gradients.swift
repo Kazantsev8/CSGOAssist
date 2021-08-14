@@ -12,6 +12,7 @@ enum Gradient: Int, CaseIterable {
     
     case horizon = 0
     
+    //Core Graphics Colors
     var colors: [CGColor] {
         switch self {
         case .horizon:
@@ -20,6 +21,7 @@ enum Gradient: Int, CaseIterable {
         }
     }
     
+    //UI Colors
     var colorsUI: [UIColor] {
         switch self {
         case .horizon:

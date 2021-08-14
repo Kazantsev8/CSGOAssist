@@ -39,7 +39,7 @@ final class SidesContentController: UICollectionViewController {
     }
     
     //MARK: - UI
-    lazy var backButton: UIButton = {
+    private lazy var backButton: UIButton = {
         let button = UIButton()
         let image = UIImage(named: "Maps.png")
         button.setImage(image, for: .normal)
@@ -52,7 +52,7 @@ final class SidesContentController: UICollectionViewController {
         return button
     }()
     
-    lazy var gradientLayer: CAGradientLayer = {
+    private lazy var gradientLayer: CAGradientLayer = {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = Gradient.horizon.colors
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
@@ -60,6 +60,7 @@ final class SidesContentController: UICollectionViewController {
         return gradientLayer
     }()
 
+    //MARK: - Constraints
     private lazy var backButtonConstraints: [NSLayoutConstraint] = {
         return [
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -89,6 +90,29 @@ final class SidesContentController: UICollectionViewController {
         collectionView.reloadData()
     }
     
+    //MARK: - Objc Methods
+    @objc func close() {
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       animations: {
+            self.backButton.transform = .init(scaleX: 0.9, y: 0.9)
+                       }, completion: { finished in
+            self.delegate?.backToMapsButtonTapped()
+                       })
+        UIView.animate(withDuration: 1,
+                       delay: 0.2,
+                       usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 30,
+                       animations: {
+            self.backButton.transform = .init(scaleX: 1, y: 1)
+                       })
+    }
+
+}
+
+//MARK: - Collection View Data Source and Delegate Methods
+extension SidesContentController {
+    
     private func createLayout() -> UICollectionViewLayout {
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .fractionalHeight(1.0))
@@ -111,11 +135,6 @@ final class SidesContentController: UICollectionViewController {
             
             return layout
     }
-
-}
-
-//MARK: - Collection View Data Source and Delegate Methods
-extension SidesContentController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sides.count
@@ -141,23 +160,6 @@ extension SidesContentController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.sideCellTapped(at: indexPath, currentSides: self.sides)
-    }
-    
-    @objc func close() {
-        UIView.animate(withDuration: 0.2,
-                       delay: 0,
-                       animations: {
-            self.backButton.transform = .init(scaleX: 0.9, y: 0.9)
-                       }, completion: { finished in
-            self.delegate?.backToMapsButtonTapped()
-                       })
-        UIView.animate(withDuration: 1,
-                       delay: 0.2,
-                       usingSpringWithDamping: 0.2,
-                       initialSpringVelocity: 30,
-                       animations: {
-            self.backButton.transform = .init(scaleX: 1, y: 1)
-                       })
     }
     
 }

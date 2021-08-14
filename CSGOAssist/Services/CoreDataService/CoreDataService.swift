@@ -50,6 +50,8 @@ extension CoreDataService: CoreDataServiceProtocol {
         return result
     }
     
+    ///Unused!
+    /*
     func sides(with predicate: NSPredicate) -> [SideDTO] {
         let readContext = stack.readContext
         var result = [SideDTO]()
@@ -62,5 +64,6 @@ extension CoreDataService: CoreDataServiceProtocol {
         }
         return result
     }
+    */
 
 }

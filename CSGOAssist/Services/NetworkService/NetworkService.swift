@@ -101,7 +101,6 @@ extension NetworkService: NetworkServiceProtocol {
             guard let data = rawData else {
                 completion(.failure(.networkError))
                 return
-                
             }
             completion(.success(data))
         }

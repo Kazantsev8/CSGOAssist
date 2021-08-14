@@ -29,10 +29,12 @@ final class Coordinator: CoordinatorProtocol {
         }
     }
     
-    func toMapsContainerController() {
-        DispatchQueue.main.async {
-            let controller = MapsContainerController(coordinator: self)
-            self.rootViewController.pushViewController(controller, animated: true)
+    func toMapsContainerController(maps: [MapDTO]) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if self.rootViewController.viewControllers.count == 1 {
+                let controller = MapsContainerController(coordinator: self, maps: maps)
+                self.rootViewController.pushViewController(controller, animated: true)
+            }
         }
     }
     

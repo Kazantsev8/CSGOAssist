@@ -19,7 +19,7 @@ protocol MapsContextControllerDelegate {
 
 //MARK: - Maps Content Controller (to display maps in MapsContainerController)
 final class MapsContentController: UICollectionViewController {
-    
+
     ///Delegate for data transfering and routing methods
     var delegate: MapsContextControllerDelegate?
     
@@ -40,7 +40,7 @@ final class MapsContentController: UICollectionViewController {
     }
     
     //MARK: - UI
-    lazy var settingsButton: UIButton = {
+    private lazy var settingsButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "CSGO_80x80transparent")
@@ -62,6 +62,16 @@ final class MapsContentController: UICollectionViewController {
         return gradientLayer
     }()
     
+    //MARK: - Constraints
+    private lazy var settingsButtonConstraints: [NSLayoutConstraint] = {
+        return [
+            settingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            settingsButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            settingsButton.heightAnchor.constraint(equalToConstant: 100),
+            settingsButton.widthAnchor.constraint(equalToConstant: 100)
+        ]
+    }()
+    
     //MARK: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,16 +86,28 @@ final class MapsContentController: UICollectionViewController {
         self.collectionView.backgroundColor = .clear
         NSLayoutConstraint.activate(settingsButtonConstraints)
     }
+
+    //MARK: - Objc Methods
+    @objc func settingsButtonTapped() {
+        delegate?.settingsButtonTapped()
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       animations: {
+            self.settingsButton.transform = .init(scaleX: 0.9, y: 0.9)
+        })
+        UIView.animate(withDuration: 1,
+                       delay: 0.2,
+                       usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 30,
+                       animations: {
+            self.settingsButton.transform = .init(scaleX: 1, y: 1)
+        })
+    }
     
-    //MARK: - Constraints
-    private lazy var settingsButtonConstraints: [NSLayoutConstraint] = {
-        return [
-            settingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            settingsButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            settingsButton.heightAnchor.constraint(equalToConstant: 100),
-            settingsButton.widthAnchor.constraint(equalToConstant: 100)
-        ]
-    }()
+}
+
+//MARK: - Collection View Data Source & Collection View Delegate Methods
+extension MapsContentController {
     
     private func createLayout() -> UICollectionViewLayout {
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -109,27 +131,6 @@ final class MapsContentController: UICollectionViewController {
             
             return layout
     }
-    
-    @objc func settingsButtonTapped() {
-        delegate?.settingsButtonTapped()
-        UIView.animate(withDuration: 0.2,
-                       delay: 0,
-                       animations: {
-            self.settingsButton.transform = .init(scaleX: 0.9, y: 0.9)
-        })
-        UIView.animate(withDuration: 1,
-                       delay: 0.2,
-                       usingSpringWithDamping: 0.2,
-                       initialSpringVelocity: 30,
-                       animations: {
-            self.settingsButton.transform = .init(scaleX: 1, y: 1)
-        })
-    }
-    
-}
-
-//MARK: - Collection View Data Source & Collection View Delegate Methods
-extension MapsContentController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return maps.count

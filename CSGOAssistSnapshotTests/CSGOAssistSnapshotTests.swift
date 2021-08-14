@@ -12,9 +12,13 @@ import SnapshotTesting
 class CSGOAssistSnapshotTests: XCTestCase {
 
     func testMapsContentController() {
-        let maps: [MapDTO] = []
-        let mapsContentController = MapsContentController(with: maps)
-        assertSnapshot(matching: mapsContentController, as: .image(on: .iPhoneSe))
+        let mapsContentController = MapsContentController(with: [])
+        assertSnapshot(matching: mapsContentController, as: .image(on: .iPhone8))
+    }
+    
+    func testSideContentController() {
+        let sidesContentController = SidesContentController(with: [])
+        assertSnapshot(matching: sidesContentController, as: .image(on: .iPhone8))
     }
     
 }

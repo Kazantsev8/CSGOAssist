@@ -15,16 +15,18 @@ final class NetworkReachability {
     
     static let shared = NetworkReachability()
     
+    //Private properties
     private let queue = DispatchQueue.global()
     private let monitor: NWPathMonitor
     
+    //Interface
     public private(set) var isConnected: Bool = false
-    
     public private(set) var connectionType: ConnectionType?
     
     enum ConnectionType {
         case wifi, cellular
     }
+    
     private init() {
         monitor = NWPathMonitor()
     }
@@ -48,4 +50,5 @@ final class NetworkReachability {
             connectionType = .wifi
         }
     }
+    
 }

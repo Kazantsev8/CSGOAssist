@@ -32,7 +32,8 @@ final class ActionsContentController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var tableView: UITableView = {
+    //MARK: - UI
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
@@ -40,7 +41,7 @@ final class ActionsContentController: UIViewController {
         return tableView
     }()
     
-    lazy var gradientLayer: CAGradientLayer = {
+    private lazy var gradientLayer: CAGradientLayer = {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = Gradient.horizon.colors
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
@@ -48,7 +49,8 @@ final class ActionsContentController: UIViewController {
         return gradientLayer
     }()
     
-    lazy var tableViewConstraints: [NSLayoutConstraint] = {
+    //MARK: - Constraints
+    private lazy var tableViewConstraints: [NSLayoutConstraint] = {
         return [
             tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             tableView.heightAnchor.constraint(equalToConstant: CGFloat(actions.count) * 44),
@@ -65,22 +67,28 @@ final class ActionsContentController: UIViewController {
         //register cell
         self.tableView.register(ActionTableViewCell.self, forCellReuseIdentifier: ActionTableViewCell.reuseID)
         //gesture recognizer
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(close))
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
+        configureGestureRecognizer()
         //adding tableview as subview
         self.view.addSubview(tableView)
         self.tableView.backgroundColor = .clear
-        NSLayoutConstraint.activate(tableViewConstraints)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         gradientLayer.frame = self.view.bounds
+        NSLayoutConstraint.activate(tableViewConstraints)
     }
     
+    //MARK: - Objc Methods
     @objc func close() {
         delegate?.leftSwiped()
+    }
+    
+    //MARK: - Other functions
+    func configureGestureRecognizer() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(close))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
     }
     
 }

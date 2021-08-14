@@ -21,7 +21,9 @@ class MapsPageTestCase: XCTestCase {
     }
     
     func testButtonCSGO() {
+        //act
         clickCSGOButton()
+        //assert
         XCTAssert(app.staticTexts["Compatible CS:GO version: v0.1"].exists)
     }
 

@@ -15,7 +15,7 @@ final class CurrentVersion {
         case compatibleVersionKey
     }
     
-    //This property contains actual update-time in server data
+    //Timestamp
     static var timeStamp: String? {
         get {
             return UserDefaults.standard.string(forKey: VersionKeys.timeStampKey.rawValue)
@@ -27,7 +27,7 @@ final class CurrentVersion {
         }
     }
     
-    //This property contains actual compatible game version
+    //Compatible version
     static var compatibleVersion: String? {
         get {
             return UserDefaults.standard.string(forKey: VersionKeys.compatibleVersionKey.rawValue)

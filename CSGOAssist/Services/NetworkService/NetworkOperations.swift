@@ -107,48 +107,48 @@ final class LoadDataOperation: AsyncOperation {
     }
     
     override func execute() {
-            switch self.needsUpdate {
-            case true:
-                print("LoadDataOperation.updateIsNeeded")
-                self.networkService.loadData { response in
-                    switch response {
-                    case .failure(let error):
-                        switch error {
-                        case .networkError:
-                            print("(WARNING)LoadDataOperation.networkError")
-                            self.failureString = "NetworkError"
-                            self.isExecuting = false
-                            self.isFinished = true
-                        case .decodeError:
-                            print("(WARNING)LoadDataOperation.decodeError")
-                            self.failureString = "DecodeError"
-                            self.isExecuting = false
-                            self.isFinished = true
-                        case .urlError:
-                            print("(WARNING)LoadDataOperation.urlError")
-                            self.failureString = "UrlError"
-                            self.isExecuting = false
-                            self.isFinished = true
-                        }
-                    case .success(let maps):
-                        print("LoadDataOperation.receivedData")
-                        self.result = maps
-                        print("LoadDataOperation.resultIsSetToNewMaps")
+        switch self.needsUpdate {
+        case true:
+            print("LoadDataOperation.updateIsNeeded")
+            self.networkService.loadData { response in
+                switch response {
+                case .failure(let error):
+                    switch error {
+                    case .networkError:
+                        print("(WARNING)LoadDataOperation.networkError")
+                        self.failureString = "NetworkError"
+                        self.isExecuting = false
+                        self.isFinished = true
+                    case .decodeError:
+                        print("(WARNING)LoadDataOperation.decodeError")
+                        self.failureString = "DecodeError"
+                        self.isExecuting = false
+                        self.isFinished = true
+                    case .urlError:
+                        print("(WARNING)LoadDataOperation.urlError")
+                        self.failureString = "UrlError"
                         self.isExecuting = false
                         self.isFinished = true
                     }
+                case .success(let maps):
+                    print("LoadDataOperation.receivedData")
+                    self.result = maps
+                    print("LoadDataOperation.resultIsSetToNewMaps")
+                    self.isExecuting = false
+                    self.isFinished = true
                 }
-            case false:
-                print("LoadDataOperation.updateNotNeeded")
-                self.result = nil
-                self.isExecuting = false
-                self.isFinished = true
-            default:
-                print("(WARNING)LoadDataOperation.updateNeededDefaultWay")
-                self.result = nil
-                self.isExecuting = false
-                self.isFinished = true
             }
+        case false:
+            print("LoadDataOperation.updateNotNeeded")
+            self.result = nil
+            self.isExecuting = false
+            self.isFinished = true
+        default:
+            print("(WARNING)LoadDataOperation.updateNeededDefaultWay")
+            self.result = nil
+            self.isExecuting = false
+            self.isFinished = true
+        }
     }
     
 }
@@ -176,39 +176,39 @@ final class RequestCompatibleVersionOperation: AsyncOperation {
     }
     
     override func execute() {
-            self.networkService.requestCompatibleVersion { request in
-                switch request {
-                case .failure(let error):
-                    switch error {
-                    case .networkError:
-                        print("(WARNING)RequestCompatibleVersionOperation.networkError")
-                        self.isExecuting = false
-                        self.isFinished = true
-                    case .decodeError:
-                        print("(WARNING)RequestCompatibleVersionOperation.decodeError")
-                        self.isExecuting = false
-                        self.isFinished = true
-                    case .urlError:
-                        print("(WARNING)RequestCompatibleVersionOperation.urlError")
-                        self.isExecuting = false
-                        self.isFinished = true
-                    }
-                case .success(let newCompatibleVersion):
-                    switch CurrentVersion.compatibleVersion {
-                    case nil:
-                        CurrentVersion.compatibleVersion = newCompatibleVersion
-                        self.isExecuting = false
-                        self.isFinished = true
-                    case newCompatibleVersion:
-                        self.isExecuting = false
-                        self.isFinished = true
-                    default:
-                        CurrentVersion.compatibleVersion = newCompatibleVersion
-                        self.isExecuting = false
-                        self.isFinished = true
-                    }
+        self.networkService.requestCompatibleVersion { request in
+            switch request {
+            case .failure(let error):
+                switch error {
+                case .networkError:
+                    print("(WARNING)RequestCompatibleVersionOperation.networkError")
+                    self.isExecuting = false
+                    self.isFinished = true
+                case .decodeError:
+                    print("(WARNING)RequestCompatibleVersionOperation.decodeError")
+                    self.isExecuting = false
+                    self.isFinished = true
+                case .urlError:
+                    print("(WARNING)RequestCompatibleVersionOperation.urlError")
+                    self.isExecuting = false
+                    self.isFinished = true
+                }
+            case .success(let newCompatibleVersion):
+                switch CurrentVersion.compatibleVersion {
+                case nil:
+                    CurrentVersion.compatibleVersion = newCompatibleVersion
+                    self.isExecuting = false
+                    self.isFinished = true
+                case newCompatibleVersion:
+                    self.isExecuting = false
+                    self.isFinished = true
+                default:
+                    CurrentVersion.compatibleVersion = newCompatibleVersion
+                    self.isExecuting = false
+                    self.isFinished = true
                 }
             }
+        }
     }
     
 }

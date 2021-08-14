@@ -83,6 +83,25 @@
 		2CB4C4FF269348AD0044CA60 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB4C4FE269348AD0044CA60 /* LoadingAnimationView.swift */; };
 		2CC64387269A1CC30066A9AA /* CoreDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC64386269A1CC30066A9AA /* CoreDataServiceProtocol.swift */; };
 		2CC6438A269B03F50066A9AA /* UpdateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC64389269B03F50066A9AA /* UpdateServiceProtocol.swift */; };
+		2CD1875D26B965D0009976A8 /* StartApplicationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1875C26B965D0009976A8 /* StartApplicationOperation.swift */; };
+		2CD1875F26B99782009976A8 /* StartApplicationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1875C26B965D0009976A8 /* StartApplicationOperation.swift */; };
+		2CD1876226B997A9009976A8 /* UIViewController+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF3980426AE082400C40F5A /* UIViewController+add.swift */; };
+		2CD1876426B997AC009976A8 /* UIViewController+remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFF1A26AECF4B00B89DF0 /* UIViewController+remove.swift */; };
+		2CD1876626B997BD009976A8 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF397F126AC34C500C40F5A /* Gradients.swift */; };
+		2CD1876726B997D6009976A8 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83E3F9267E289D009632FC /* ServiceLocator.swift */; };
+		2CD1876826B997D9009976A8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83E3FB267E28DA009632FC /* Coordinator.swift */; };
+		2CD1876926B997DC009976A8 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF3980126ADECD000C40F5A /* CoordinatorProtocol.swift */; };
+		2CD1876A26B997DF009976A8 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C33341A268F06A900122E50 /* LoadViewController.swift */; };
+		2CD1876B26B997E4009976A8 /* MapsContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF397FD26AD674A00C40F5A /* MapsContainerController.swift */; };
+		2CD1876C26B99832009976A8 /* SettingsContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFF1C26B12E1100B89DF0 /* SettingsContentController.swift */; };
+		2CD1876D26B99834009976A8 /* MapsContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83E3CA267E27DA009632FC /* MapsContentController.swift */; };
+		2CD1876E26B99836009976A8 /* SidesContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFF1226AE7F0E00B89DF0 /* SidesContentController.swift */; };
+		2CD1876F26B99839009976A8 /* ActionsContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFF1826AE860900B89DF0 /* ActionsContentController.swift */; };
+		2CD1877026B9983F009976A8 /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83E402267E5848009632FC /* MapCollectionViewCell.swift */; };
+		2CD1877126B99841009976A8 /* ActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFF1626AE835000B89DF0 /* ActionTableViewCell.swift */; };
+		2CD1877226B99844009976A8 /* SideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFF1426AE81B100B89DF0 /* SideCollectionViewCell.swift */; };
+		2CD1877326B9985F009976A8 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB4C4FE269348AD0044CA60 /* LoadingAnimationView.swift */; };
+		2CD1877426B9987A009976A8 /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB4C4F82693257D0044CA60 /* AnimationLayer.swift */; };
 		2CDF710026A75F7200F9AB14 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF70FF26A75F7200F9AB14 /* NetworkReachability.swift */; };
 		2CDF710226A7E7DE00F9AB14 /* UpdateFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF710126A7E7DE00F9AB14 /* UpdateFlow.swift */; };
 		2CDF710426A7EBDD00F9AB14 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF710326A7EBDD00F9AB14 /* AsyncOperation.swift */; };
@@ -178,6 +197,7 @@
 		2CB4C4FE269348AD0044CA60 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		2CC64386269A1CC30066A9AA /* CoreDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceProtocol.swift; sourceTree = "<group>"; };
 		2CC64389269B03F50066A9AA /* UpdateServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateServiceProtocol.swift; sourceTree = "<group>"; };
+		2CD1875C26B965D0009976A8 /* StartApplicationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartApplicationOperation.swift; sourceTree = "<group>"; };
 		2CDF70FF26A75F7200F9AB14 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		2CDF710126A7E7DE00F9AB14 /* UpdateFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFlow.swift; sourceTree = "<group>"; };
 		2CDF710326A7EBDD00F9AB14 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -239,7 +259,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		2C3333B42685CE1300122E50 /* ContextController */ = {
+		2C3333B42685CE1300122E50 /* ContentController */ = {
 			isa = PBXGroup;
 			children = (
 				2CEAFF1C26B12E1100B89DF0 /* SettingsContentController.swift */,
@@ -247,14 +267,14 @@
 				2CEAFF1226AE7F0E00B89DF0 /* SidesContentController.swift */,
 				2CEAFF1826AE860900B89DF0 /* ActionsContentController.swift */,
 			);
-			path = ContextController;
+			path = ContentController;
 			sourceTree = "<group>";
 		};
 		2C3333B52685CE2A00122E50 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
 				2CF3980326AE06CB00C40F5A /* ContainerController */,
-				2C3333B42685CE1300122E50 /* ContextController */,
+				2C3333B42685CE1300122E50 /* ContentController */,
 				2C3333B32685CE0500122E50 /* View */,
 			);
 			path = MainModule;
@@ -481,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				2CDF710126A7E7DE00F9AB14 /* UpdateFlow.swift */,
+				2CD1875C26B965D0009976A8 /* StartApplicationOperation.swift */,
 				2CC64389269B03F50066A9AA /* UpdateServiceProtocol.swift */,
 			);
 			path = UpdateService;
@@ -679,35 +700,53 @@
 				2C360AAE26B2A53C002A3F79 /* CurrentVersion.swift in Sources */,
 				2C360AAA26B2A52D002A3F79 /* NetworkService.swift in Sources */,
 				2C360ABC26B2A566002A3F79 /* UpdateFlow.swift in Sources */,
+				2CD1877126B99841009976A8 /* ActionTableViewCell.swift in Sources */,
 				2C360AA526B2A516002A3F79 /* ActionDTO.swift in Sources */,
 				2C360ABE26B2A56B002A3F79 /* CoreDataOperations.swift in Sources */,
 				2C360AB126B2A558002A3F79 /* Map+CoreDataProperties.swift in Sources */,
 				2C360AA926B2A52B002A3F79 /* NetworkServiceError.swift in Sources */,
 				2C360AAB26B2A533002A3F79 /* NetworkServiceConstants.swift in Sources */,
 				2C360AAC26B2A533002A3F79 /* NetworkOperations.swift in Sources */,
+				2CD1876F26B99839009976A8 /* ActionsContentController.swift in Sources */,
 				2C360AA426B2A513002A3F79 /* SideDTO.swift in Sources */,
 				2C360AB426B2A558002A3F79 /* Side+CoreDataClass.swift in Sources */,
 				2C360ABF26B2A56B002A3F79 /* CoreDataServiceProtocol.swift in Sources */,
+				2CD1877326B9985F009976A8 /* LoadingAnimationView.swift in Sources */,
 				2C360AB326B2A558002A3F79 /* Action+CoreDataProperties.swift in Sources */,
+				2CD1876A26B997DF009976A8 /* LoadViewController.swift in Sources */,
 				2C360AC826B2D8E7002A3F79 /* CSGOAssist.xcdatamodeld in Sources */,
+				2CD1876926B997DC009976A8 /* CoordinatorProtocol.swift in Sources */,
 				2C360AB026B2A558002A3F79 /* Side+CoreDataProperties.swift in Sources */,
 				2C360AAD26B2A533002A3F79 /* NetworkReachability.swift in Sources */,
 				2C360AA726B2A51B002A3F79 /* ArticleDTO.swift in Sources */,
 				2C360AB726B2A558002A3F79 /* Topic+CoreDataClass.swift in Sources */,
+				2CD1877026B9983F009976A8 /* MapCollectionViewCell.swift in Sources */,
 				2C360AB226B2A558002A3F79 /* Article+CoreDataClass.swift in Sources */,
 				2C360AC326B2BC7E002A3F79 /* MockCoreDataStack.swift in Sources */,
+				2CD1876426B997AC009976A8 /* UIViewController+remove.swift in Sources */,
 				2C360ABB26B2A566002A3F79 /* AsyncOperation.swift in Sources */,
+				2CD1876E26B99836009976A8 /* SidesContentController.swift in Sources */,
+				2CD1876B26B997E4009976A8 /* MapsContainerController.swift in Sources */,
+				2CD1876826B997D9009976A8 /* Coordinator.swift in Sources */,
+				2CD1877426B9987A009976A8 /* AnimationLayer.swift in Sources */,
+				2CD1876C26B99832009976A8 /* SettingsContentController.swift in Sources */,
 				2C360ABA26B2A566002A3F79 /* UpdateServiceProtocol.swift in Sources */,
 				2C360AA826B2A528002A3F79 /* NetworkServiceProtocol.swift in Sources */,
 				2C360ABD26B2A56B002A3F79 /* CoreDataService.swift in Sources */,
 				2C360AAF26B2A558002A3F79 /* Map+CoreDataClass.swift in Sources */,
+				2CD1876626B997BD009976A8 /* Gradients.swift in Sources */,
+				2CD1875F26B99782009976A8 /* StartApplicationOperation.swift in Sources */,
 				2C360AC626B2C3A3002A3F79 /* CoreDataStackProtocol.swift in Sources */,
+				2CD1877226B99844009976A8 /* SideCollectionViewCell.swift in Sources */,
 				2C360AB626B2A558002A3F79 /* CoreDataStack.swift in Sources */,
+				2CD1876226B997A9009976A8 /* UIViewController+add.swift in Sources */,
 				2C360AB926B2A558002A3F79 /* Topic+CoreDataProperties.swift in Sources */,
 				2C360A9926B2A0F6002A3F79 /* CSGOAssistTests.swift in Sources */,
 				2C360AA326B2A511002A3F79 /* MapDTO.swift in Sources */,
 				2C360AC126B2A5F7002A3F79 /* CoreDataServiceTests.swift in Sources */,
+				2CD1876D26B99834009976A8 /* MapsContentController.swift in Sources */,
 				2C360AA626B2A519002A3F79 /* TopicDTO.swift in Sources */,
+				2CD1876726B997D6009976A8 /* ServiceLocator.swift in Sources */,
 				2C360AB526B2A558002A3F79 /* Article+CoreDataProperties.swift in Sources */,
 				2C360ACC26B2DC56002A3F79 /* NetworkServiceTests.swift in Sources */,
 				2C360AB826B2A558002A3F79 /* Action+CoreDataClass.swift in Sources */,
@@ -739,6 +778,7 @@
 				2C86036526A07DEC0032C96D /* Side+CoreDataClass.swift in Sources */,
 				2CEAFF1926AE860900B89DF0 /* ActionsContentController.swift in Sources */,
 				2C86036826A07DEC0032C96D /* Action+CoreDataProperties.swift in Sources */,
+				2CD1875D26B965D0009976A8 /* StartApplicationOperation.swift in Sources */,
 				2C86036C26A68EED0032C96D /* CurrentVersion.swift in Sources */,
 				2C3333E7268B4C5200122E50 /* MapDTO.swift in Sources */,
 				2CF397FE26AD674A00C40F5A /* MapsContainerController.swift in Sources */,

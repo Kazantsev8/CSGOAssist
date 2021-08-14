@@ -23,7 +23,6 @@ final class WriteMapsOperation: AsyncOperation {
         return result
     }
     
-    //Init
     init(coreDataService: CoreDataServiceProtocol, maps: [MapDTO]?) {
         self.coreDataService = coreDataService
         self._maps = maps
@@ -62,7 +61,11 @@ final class ReadMapsOperation: AsyncOperation {
     override func execute() {
         if isCancelled { return }
         print("ReadMapsOperation.start")
-        let result = self.coreDataService.readMaps()
+        var result: [MapDTO] = []
+        while result == [] {
+            let maps = coreDataService.readMaps()
+            result = maps
+        }
         print("ReadMapsOperation.readMapsCompleted")
         self.result = result
         self.isExecuting = false
@@ -71,7 +74,7 @@ final class ReadMapsOperation: AsyncOperation {
 
 }
 
-//MARK: - Core Data Operation - Output Parameters
+//MARK: - Read Maps Operation - Output Parameters
 extension ReadMapsOperation: CoreDataMapsPass {
     
     var maps: [MapDTO]? {

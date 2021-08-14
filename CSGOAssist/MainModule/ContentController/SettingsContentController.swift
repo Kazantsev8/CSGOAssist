@@ -34,18 +34,6 @@ final class SettingsContentController: UIViewController {
         return label
     }()
     
-    //MARK: - View Controller Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = Gradient.horizon.colorsUI[1]
-        self.view.addSubview(compatibleVersionLabel)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NSLayoutConstraint.activate(labelConstraints)
-    }
-    
     //MARK: - Constraints
     private lazy var labelConstraints: [NSLayoutConstraint] = {
         return [
@@ -62,5 +50,17 @@ final class SettingsContentController: UIViewController {
                 equalToConstant: 20)
         ]
     }()
+    
+    //MARK: - View Controller Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = Gradient.horizon.colorsUI[1]
+        self.view.addSubview(compatibleVersionLabel)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NSLayoutConstraint.activate(labelConstraints)
+    }
 
 }
